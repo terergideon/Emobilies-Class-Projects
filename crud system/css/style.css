@@ -1,0 +1,84 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: "Poppins" ,sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../images/bgone.jpg) ;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.section1{
+    width: 600px;
+    height:600px;
+    padding: 40px,30px;
+    margin:auto;
+    background: white;
+    background-color: rgb(148, 161, 179);
+    border-radius: 30px;
+    box-shadow: yellowgreen;
+}
+
+.form{
+    padding: 30%;
+    position: center;
+
+
+}
+.section1 .login {
+    text-align: center;
+    color: dark;
+    margin-bottom:25px;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+/* .submit{
+    display: flex;
+   
+} */
+.submit .btn{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding:20px 20px;
+    text-align: center;
+    border: none;
+    background: grey;
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+
+
+}
+
+.section1 .login-social{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, mimax(50%,1fr));
+    margin-bottom :25px;
+}
+
+.section1 .loginemail .input-group{
+    width: 100%;
+    height:50px;
+    margin-bottom: 25px;
+}
+
+.form-group .input [type= email],[type=password] select {
+    width:100% ;
+    height: 100%;
+    padding: 15px 20px;
+    transition: none;
+    background:transparent;
+    border:2px solidcolor;
+
+}
