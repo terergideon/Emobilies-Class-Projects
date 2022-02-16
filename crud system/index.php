@@ -14,6 +14,18 @@ if(isset($_session["username"])){
 if(isset($_POST['submit'])){
     $email =$_POST['email'];
     $password =md5($_POST['password']);//md5 encrypts the password
+    //select from users to pick data
+    $sql ="select * from users where email ='$email' and password ='$password'";//check the email in db and compare if the user exists in db.
+    $result =mysqli_query($conn,$sql);//query and store result in result
+    if($result->num_rows > 0){
+        $row  =mysqli_fetch_assoc($result);//fetch the entire row of the result if any.
+        $_SESSION["username"] =$row["username"];//assign the row result to the session
+        header("location: welcome.php");
+    }
+    else{
+        echo "<script> alert('OOps Email or Password is wrong')</script>";
+
+    }
 }
 ?>
 <!-- the form used -->
@@ -36,35 +48,23 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <head>
-    <section class="section1">
-     
-        <form action="index.php" method="POST" class="form"> 
-       
-                 <div class="text-dark ">
-                    <p class="login">login</p>
-                </div>
-        
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
-                </div>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox"> Remember me
-                    </label>
-                </div>
-                <div class="submit">
-                <button type="submit" class="btn ">login</button>
-                <p style="text-align: center;"> Dont Have ACCOUNT?<a href="register.php">Register here</a></p>
-                </div>
-                
-        </form> 
-    </section>
-        
+    <div class ="container">
+        <form action="" method="POST" class="login-email">
+        <p class="login-text" style="font-size: 2rem; font: weight 800;">login</p>
+        <div class="input-group">
+            <input type="email" placeholder="Email" name="email"  value="<?php echo $email;?> " required>
+
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="password" name="password"  value="<?php echo $paswword;?> " required>
+
+        </div>
+        <div class="input-group">
+           <button name="submit" class="btn">Login</button>
+        </div>
+        <p class="login-register-text">Dont have an account?<a href="register.php">Register here</a></p>
+    </div>
+    </form>
     </head>
 </body>
 </html>
