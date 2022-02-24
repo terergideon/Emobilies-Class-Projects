@@ -56,15 +56,16 @@ if(isset($_POST['submit'])){
 
         </div>
         <div class="input-group">
-            <input type="password" placeholder="password" name="password"  value="<?php echo $paswword;?> " required>
+            <input type="password" placeholder="password" name="password"  value="<?php echo $password;?> " required>
 
         </div>
         <div class="input-group">
            <button name="submit" class="btn">Login</button>
         </div>
         <p class="login-register-text">Dont have an account?<a href="register.php">Register here</a></p>
-    </div>
+    
     </form>
+    </div>
     </head>
 </body>
 </html>

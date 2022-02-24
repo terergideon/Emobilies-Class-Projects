@@ -17,13 +17,16 @@ if(isset($_POST['submit'])){
     //cjeck if the passwords match
 
     if ($password ==$cpassword){
-        $sql = "select * from users where email = $email";
+        $sql = "select * from users where email = '$email'";
         $result =mysqli_query($conn,$sql);
         if(!$result->num_rows>0){
             $sql  = "insert into users(firstName, lastName,username, email, password) 
                     values ('$fname','$lname','$username', '$email', '$password')";
                     
             $result =  mysqli_query($conn,$sql);
+            
+            die("Unable to connect to $sql");
+
           
             if($result){
                echo"<script>alert('Login successful')</script>";
@@ -33,6 +36,7 @@ if(isset($_POST['submit'])){
             $email = "";
             $_POST['password'] = "";
             $_POST['cpassword'] = "";
+
 
             }
             else{"<script>alert('Woops!Try again something went wrong')</script>";} 
@@ -48,6 +52,8 @@ if(isset($_POST['submit'])){
         echo"<script> alert('OOps passwords do not match!!')</script>";
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
